@@ -1,4 +1,4 @@
-var scores, roundScore, activePlayer, gameIsPlaying,previousDice;
+var scores, roundScore, activePlayer, gameIsPlaying, previousDice, winningScore;
 
 function init(){
 scores = [0, 0];
@@ -27,6 +27,10 @@ document.getElementById('current-1').textContent = '0';
             document.querySelector('.player-1-panel').classList.remove('active');
             document.querySelector('.player-0-panel').classList.add('active');
     
+                 winningScore = document.querySelector('.winning-score').value;
+                    if(winningScore != +winningScore){
+                        winningScore = 10;
+                    }
 }
 
 function switchPlayer(){
@@ -92,7 +96,7 @@ document.querySelector('.btn-hold').addEventListener('click',function(){
     scores[activePlayer] += roundScore;
     document.querySelector('#score-' + activePlayer).textContent = scores[activePlayer];
     zeroCurrentField();
-    if(scores[activePlayer] >= 10){
+    if(scores[activePlayer] >= winningScore){
         document.querySelector('#name-' + activePlayer).textContent = 'Winner!';
         document.querySelector('.player-' + activePlayer +'-panel').classList.add('winner');
         document.querySelector('.player-' + activePlayer +'-panel').classList.remove('active');
