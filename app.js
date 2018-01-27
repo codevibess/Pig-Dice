@@ -7,8 +7,9 @@ activePlayer = 0;
 gameIsPlaying = true;
     
     
-//Hide a dice when page is first loaded or reloaded 
+//Hide a dices when page is first loaded or reloaded 
 document.querySelector('.dice').style.display = 'none';
+document.querySelector('.second-dice').style.display = 'none';
 
 //Set zeros in field curent & player score 
 document.getElementById('score-0').textContent = '0';
@@ -28,7 +29,7 @@ document.getElementById('current-1').textContent = '0';
             document.querySelector('.player-0-panel').classList.add('active');
     
                  winningScore = document.querySelector('.winning-score').value;
-                    if(winningScore != +winningScore){
+                    if(winningScore != +winningScore || winningScore == ''){
                         winningScore = 10;
                     }
 }
@@ -47,6 +48,9 @@ function switchPlayer(){
     //Swap  active  label  
     document.querySelector('.player-0-panel').classList.toggle('active');
     document.querySelector('.player-1-panel').classList.toggle('active');
+    
+    document.querySelector('.dice').style.display = 'none';
+    document.querySelector('.second-dice').style.display = 'none';
 }
 function zeroCurrentField(){
 document.querySelector('#current-'+ activePlayer).textContent = 0;
@@ -66,6 +70,7 @@ document.querySelector('.btn-roll').addEventListener('click',function(){
     if(gameIsPlaying){
 //1.Random number  
 var dice = Math.floor(Math.random() * 6) + 1;
+var secondDice = Math.floor(Math.random() * 6) + 1;
 //var dice = 6;
     
 //2.Display the result
@@ -73,16 +78,20 @@ var diceDOM =  document.querySelector('.dice');
 diceDOM.style.display='block';
 diceDOM.src = 'dice-'+ dice + '.png';
 
-if(dice == 1 || (dice == 6 && previousDice == 6)) {
+var diceDOM =  document.querySelector('.second-dice');
+diceDOM.style.display='block';
+diceDOM.src = 'dice-'+ secondDice + '.png';
+        
+if(dice == 1|| secondDice == 1 || (dice == 6 && secondDice == 6)) {
     
 zeroCurrentField();
-previousDice = 0;
+secondDice = 0;
 switchPlayer();
     
       
 }else{
     //Show in field #curent roundScore
-    roundScore += dice; 
+    roundScore += dice + secondDice; 
     document.querySelector('#current-' + activePlayer).textContent = roundScore;
     
     previousDice = dice;
