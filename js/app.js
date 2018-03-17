@@ -76,11 +76,11 @@ document.querySelector('.btn-roll').addEventListener('click', function () {
         //2.Display the result
         var diceDOM = document.querySelector('.dice');
         diceDOM.style.display = 'block';
-        diceDOM.src = 'https://raw.githubusercontent.com/codevibess/Pig-Dice/master/images/dice-' + dice + '.png';
+        diceDOM.src = 'https://raw.githubusercontent.com/codevibess/Pig-Dice/master/images/Dice-' + dice + '.png';
 
         var diceDOM = document.querySelector('.second-dice');
         diceDOM.style.display = 'block';
-        diceDOM.src = 'https://raw.githubusercontent.com/codevibess/Pig-Dice/master/images/dice-' + secondDice + '.png';
+        diceDOM.src = 'https://raw.githubusercontent.com/codevibess/Pig-Dice/master/images/Dice-' + secondDice + '.png';
 
         if (dice == 1 || secondDice == 1 || (dice == 6 && secondDice == 6)) {
 
