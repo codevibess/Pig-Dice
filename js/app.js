@@ -30,7 +30,7 @@ function init() {
 
     winningScore = document.querySelector('.winning-score').value;
     if (winningScore != +winningScore || winningScore == '') {
-        winningScore = 10;
+        winningScore = 100;
     }
 }
 
@@ -76,11 +76,11 @@ document.querySelector('.btn-roll').addEventListener('click', function () {
         //2.Display the result
         var diceDOM = document.querySelector('.dice');
         diceDOM.style.display = 'block';
-        diceDOM.src = '/images/dice-' + dice + '.png';
+        diceDOM.src = 'https://raw.githubusercontent.com/codevibess/Pig-Dice/master/images/dice-' + dice + '.png';
 
         var diceDOM = document.querySelector('.second-dice');
         diceDOM.style.display = 'block';
-        diceDOM.src = '/images/dice-' + secondDice + '.png';
+        diceDOM.src = 'https://raw.githubusercontent.com/codevibess/Pig-Dice/master/images/dice-' + secondDice + '.png';
 
         if (dice == 1 || secondDice == 1 || (dice == 6 && secondDice == 6)) {
 
